@@ -3,6 +3,7 @@ package com.ps;
 import java.io.*;
 import java.util.ArrayList;
 import java.io.IOException;
+import java.util.List;
 
 public class FileManager {
     public static Dealership getDealership() {
@@ -13,7 +14,7 @@ public class FileManager {
             // Read the first line for zoo information
             String dealershipInfo = reader.readLine();
             if (dealershipInfo != null) {
-                String[] dealershipDetails = dealershipInfo.split(",");
+                String[] dealershipDetails = dealershipInfo.split("\\|");
                 String dealershipName = dealershipDetails[0];
                 String dealershipAddress = dealershipDetails[1];
                 String dealershipPhone = dealershipDetails[2];
@@ -21,7 +22,7 @@ public class FileManager {
             }
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] vehicleData = line.split(",");
+                String[] vehicleData = line.split("\\|");
                 int vin = Integer.parseInt(vehicleData[0]);
                 int year = Integer.parseInt(vehicleData[1]);
                 String make = vehicleData[2];
@@ -43,4 +44,39 @@ public class FileManager {
 
         return dealership;
     }
+    public static void saveDealership(Dealership dealership) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("vehicles.csv"))) {
+
+            String firstLine = String.format("%s|%s|%s",
+                    dealership.getName(),
+                    dealership.getAddress(),
+                    dealership.getPhone());
+            bw.write(firstLine);
+            bw.newLine();
+
+            List<Vehicle> vehicles = dealership.getAllVehicles();
+            for (int i = 0; i < vehicles.size(); i++) {
+                Vehicle vehicle = vehicles.get(i);
+                String vehicleLine = String.format("%d|%d|%s|%s|%s|%s|%d|%.2f",
+                        vehicle.getVin(),
+                        vehicle.getYear(),
+                        vehicle.getMake(),
+                        vehicle.getModel(),
+                        vehicle.getVehicleType(),
+                        vehicle.getColor(),
+                        vehicle.getOdometer(),
+                        vehicle.getPrice()
+                );
+                bw.write(vehicleLine);
+
+                if (i < vehicles.size() - 1) {
+                    bw.newLine();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle any IOExceptions
+        }
+    }
+
 }

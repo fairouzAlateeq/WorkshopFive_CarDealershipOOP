@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ad4ac54-f686-4ab2-acde-dc50212ccaca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vehicles.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Dealership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Dealership.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehicles.csv" beforeDir="false" afterPath="$PROJECT_DIR$/vehicles.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -155,13 +155,28 @@ public class UserInterface {
         Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
         // add to vehicles and save to dealership
         dealership.addVehicle(newVehicle);
+        FileManager.saveDealership(dealership);
         System.out.println("saved successfully.");
     }
-    private static void ProcessRemoveVehicle(){
-        System.out.println("whats the vehicle's vin number? ");
-        int vinToRemove =inputScanner.nextInt();
-        Dealership.removeVehicle(vinToRemove);
-        System.out.println("Removed Successfully");
+    private static void ProcessRemoveVehicle() {
+        System.out.print("\nEnter the VIN of the vehicle you want to remove: ");
+        int vin = Integer.parseInt(inputScanner.nextLine().trim());
+
+        Vehicle vehicleToRemove = null;
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vin) {
+                vehicleToRemove = vehicle;
+                break;
+            }
+        }
+
+        if (vehicleToRemove != null) {
+            dealership.removeVehicle(vehicleToRemove);
+            System.out.println("\nVehicle removed successfully and inventory updated.");
+        } else {
+            System.out.println("\nNo vehicle found with the specified VIN.");
+        }
+        FileManager.saveDealership(dealership);
     }
 
 

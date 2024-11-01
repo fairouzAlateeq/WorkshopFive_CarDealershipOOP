@@ -103,11 +103,10 @@ import java.util.List;
            // FileManager.saveDealership(this);
         }
 
-        public static void removeVehicle(int vin){
-            for(Vehicle vehicle :inventory) {
-                if (vehicle.getVin() == vin)
-                    inventory.remove(vehicle);
-            }
+        public static void removeVehicle(Vehicle vehicle){
+
+            inventory.remove(vehicle);
+
         }
 
       //  public void setInventory(ArrayList<Vehicle> vehicles) {
