@@ -100,7 +100,7 @@ import java.util.List;
 
         public void addVehicle(Vehicle vehicle){
             inventory.add(vehicle);
-            DealershipFileManager.saveDealership(this);
+           // FileManager.saveDealership(this);
         }
 
         public static void removeVehicle(int vin){
@@ -110,9 +110,9 @@ import java.util.List;
             }
         }
 
-        public void setInventory(ArrayList<Vehicle> vehicles) {
-            inventory = vehicles;
-        }
+      //  public void setInventory(ArrayList<Vehicle> vehicles) {
+        //    inventory = vehicles;
+      //  }
 
 }
 

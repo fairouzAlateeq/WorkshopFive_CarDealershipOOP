@@ -7,19 +7,15 @@ public class UserInterface {
 
     private static Scanner commandScanner = new Scanner(System.in);
     private static Scanner inputScanner = new Scanner(System.in);
-    private static List<Vehicle> vehicles;
     private static Dealership dealership;
 
-    public UserInterface(Dealership dealership) {
-        this.dealership = dealership;
-    }
-    // init() method and mkae it static to initilize
     public static void init(){
         //Loading the dealership and inventory from a file
         dealership = FileManager.getDealership();
     }
-    //helper method // dispalayvehicles
+    //helper method // displayvehicles
     public static void displayScreen() {
+        init();
         int command;
 
         do {
@@ -41,101 +37,32 @@ public class UserInterface {
 
             switch (command) {
                 case 1:
-                    System.out.println("enter mimimum price: ");
-                    double min = inputScanner.nextDouble();
-                    System.out.println("enter your max: ");
-                    double max = inputScanner.nextDouble();
-                    vehicles = Dealership.getVehicleByPrice(min, max);
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
+                    processGetVehicleByPrice();
                     break;
                 case 2:
-                    System.out.println("whats the make? ");
-                    String carMake = inputScanner.nextLine();
-                    System.out.println("model? ");
-                    String carModel = inputScanner.nextLine();
-
-                    vehicles = dealership.getVehicleByMakeModel(carMake, carModel);
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
+                    processGetVehicleByMakeModel();
                     break;
                 case 3:
-                    System.out.println("enter your min year: ");
-                    int year1 = inputScanner.nextInt();
-                    System.out.println("enter your max year: ");
-                    int year2 = inputScanner.nextInt();
+                    processGetVehicleByYear();
 
-                    vehicles = dealership.getVehicleByYear(year1, year2);
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
                     break;
                 case 4:
-                    System.out.println("What color are you looking for? ");
-                    String col = inputScanner.nextLine();
-
-                    vehicles = dealership.getVehicleByColor(col);
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
+                    processGetVehicleByColor();
                     break;
                 case 5:
-                    System.out.println("min Milage: ");
-                    int minMilage = inputScanner.nextInt();
-                    System.out.println("max Milage");
-                    int maxMilage = inputScanner.nextInt();
-                    vehicles = Dealership.getVehicleByMilage(minMilage,maxMilage);
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
-
+                    processGetVehicleByMilage();
                     break;
                 case 6:
-                    System.out.println("What type od car are you looking for? ");
-                    String type = inputScanner.nextLine();
-                    vehicles = Dealership.getVehicleByType(type);
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
+                    processGetVehicleByType();
                     break;
                 case 7:
-                    System.out.println("all available cars: ");
-                    vehicles = Dealership.getAllVehicles();
-                    for (Vehicle v: vehicles) {
-                        System.out.println(v);
-                    }
+                    processGetAllVehicles();
                     break;
                 case 8:
-                    System.out.println("Enter Vehicle Data: ");
-                    System.out.println("Vin number: ");
-                    int vin =  inputScanner.nextInt();
-                    System.out.println("Year: ");
-                    int year = inputScanner.nextInt();
-                    inputScanner.nextLine();
-                    System.out.println("make: ");
-                    String make = inputScanner.nextLine();
-                    System.out.println("model: ");
-                    String model = inputScanner.nextLine();
-                    System.out.println("type: ");
-                    String vehicleType= inputScanner.nextLine();
-                    System.out.println("color: ");
-                    String color= inputScanner.nextLine();
-                    System.out.println("odometer read: ");
-                    int odometer = inputScanner.nextInt();
-                    System.out.println("price: ");
-                    double price = inputScanner.nextDouble();
-                    Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
-                    // add to vehicles and save to dealership
-                    dealership.addVehicle(newVehicle);
-                    // DealershipFileManager.saveDealership();
-
+                    processAddVehicle();
                     break;
                 case 9:
-                    System.out.println("whats the vehicle's vin number? ");
-                    int vinToRemove =inputScanner.nextInt();
-                    Dealership.removeVehicle(vinToRemove);
+                    ProcessRemoveVehicle();
                     break;
                 case 99:
                     System.out.println("See you next time! ");
@@ -148,6 +75,96 @@ public class UserInterface {
 
 
     }
+    public static void processDisplayVehicles(List<Vehicle> vehicles){
+        for(Vehicle vehicle: vehicles) {
+            System.out.println(vehicle);
+        }
+    }
+    public static void processGetVehicleByPrice(){
+        System.out.println("enter mimimum price: ");
+        double min = inputScanner.nextDouble();
+        System.out.println("enter your max: ");
+        double max = inputScanner.nextDouble();
+        List<Vehicle> vehicles = Dealership.getVehicleByPrice(min, max);
+        processDisplayVehicles(vehicles);
+
+    }
+    public static void processGetVehicleByMakeModel(){
+        System.out.println("whats the make? ");
+        String carMake = inputScanner.nextLine();
+        System.out.println("model? ");
+        String carModel = inputScanner.nextLine();
+        List<Vehicle> vehicles = dealership.getVehicleByMakeModel(carMake, carModel);
+        processDisplayVehicles(vehicles);
+
+    }
+    public static void processGetVehicleByYear(){
+        System.out.println("enter your min year: ");
+        int year1 = inputScanner.nextInt();
+        System.out.println("enter your max year: ");
+        int year2 = inputScanner.nextInt();
+        List<Vehicle> vehicles = dealership.getVehicleByYear(year1, year2);
+        processDisplayVehicles(vehicles);
+
+    }
+    public static void processGetVehicleByColor(){
+        System.out.println("What color are you looking for? ");
+        String col = inputScanner.nextLine();
+        List<Vehicle> vehicles = dealership.getVehicleByColor(col);
+        processDisplayVehicles(vehicles);
+
+    }
+    public static void processGetVehicleByMilage(){
+        System.out.println("min Milage: ");
+        int minMilage = inputScanner.nextInt();
+        System.out.println("max Milage");
+        int maxMilage = inputScanner.nextInt();
+        List<Vehicle> vehicles = Dealership.getVehicleByMilage(minMilage,maxMilage);
+        processDisplayVehicles(vehicles);
+    }
+    public static void processGetVehicleByType(){
+        System.out.println("What type od car are you looking for? ");
+        String type = inputScanner.nextLine();
+        List<Vehicle> vehicles = Dealership.getVehicleByType(type);
+        processDisplayVehicles(vehicles);
+    }
+    public static void processGetAllVehicles(){
+        System.out.println("all available cars: ");
+        List<Vehicle> vehicles = Dealership.getAllVehicles();
+        processDisplayVehicles(vehicles);
+    }
+    private static void processAddVehicle(){
+        System.out.println("Enter Vehicle Data: ");
+        System.out.println("Vin number: ");
+        int vin =  inputScanner.nextInt();
+        System.out.println("Year: ");
+        int year = inputScanner.nextInt();
+        inputScanner.nextLine();
+        System.out.println("make: ");
+        String make = inputScanner.nextLine();
+        System.out.println("model: ");
+        String model = inputScanner.nextLine();
+        System.out.println("type: ");
+        String vehicleType= inputScanner.nextLine();
+        System.out.println("color: ");
+        String color= inputScanner.nextLine();
+        System.out.println("odometer read: ");
+        int odometer = inputScanner.nextInt();
+        System.out.println("price: ");
+        double price = inputScanner.nextDouble();
+        Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+        // add to vehicles and save to dealership
+        dealership.addVehicle(newVehicle);
+        System.out.println("saved successfully.");
+    }
+    private static void ProcessRemoveVehicle(){
+        System.out.println("whats the vehicle's vin number? ");
+        int vinToRemove =inputScanner.nextInt();
+        Dealership.removeVehicle(vinToRemove);
+        System.out.println("Removed Successfully");
+    }
+
+
 
 
 }
