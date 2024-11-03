@@ -2,12 +2,13 @@ package com.ps;
 
 import java.util.ArrayList;
 import java.util.List;
-
-    public class Dealership {
+import java.util.Scanner;
+ public class Dealership {
         private static String name;
         private static String address;
         private static String phone;
 
+        static Scanner scanny = new Scanner(System.in);
         private static ArrayList<Vehicle> inventory = new ArrayList<>();
 
         public Dealership(String name, String address, String phone) {
@@ -47,6 +48,13 @@ import java.util.List;
                     vehicles.add(vehicle);
             }
             return vehicles;
+        }
+        public static Vehicle getVehicleByVin(int vin){
+            for (Vehicle vehicle : inventory) {
+                if(vehicle.getVin() == vin)
+                    return vehicle;
+            }
+            return null;
         }
         public static List<Vehicle> getVehicleByMakeModel(String make, String model){
             List<Vehicle> vehicles = new ArrayList<>();
@@ -112,6 +120,10 @@ import java.util.List;
       //  public void setInventory(ArrayList<Vehicle> vehicles) {
         //    inventory = vehicles;
       //  }
+        //public static Vehicle sellOrLeaseAVehicle(){
+
+        //}
+
 
 }
 

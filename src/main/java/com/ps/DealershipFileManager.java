@@ -1,11 +1,10 @@
 package com.ps;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.io.IOException;
 import java.util.List;
 
-public class FileManager {
+public class DealershipFileManager {
     public static Dealership getDealership() {
         //array list
         Dealership dealership = null;
