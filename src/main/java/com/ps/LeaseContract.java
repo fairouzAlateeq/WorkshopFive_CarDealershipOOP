@@ -8,6 +8,8 @@ public class LeaseContract extends Contract{
         super(date, customerName, customerEmail, vehicleSold,0,0);
         this.expectedEndingValue = vehicleSold.getPrice() * 0.5;
         this.leaseFee = vehicleSold.getPrice() * .07;
+        this.totalPrice = getTotalPrice();
+        this.monthlyPayment = getMonthlyPayment();
     }
 
     @Override

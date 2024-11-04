@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ad4ac54-f686-4ab2-acde-dc50212ccaca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/contract.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ps/ContractsFileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Contract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/Dealership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/Dealership.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/DealershipFileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/LeaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/LeaseContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/SalesContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/SalesContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" afterDir="false" />

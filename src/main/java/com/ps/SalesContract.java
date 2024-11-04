@@ -14,6 +14,8 @@ public class SalesContract extends Contract {
         this.processingFee = 295;
         else this.processingFee = 495;
         this.finance = finance;
+        this.totalPrice = getTotalPrice();
+        this.monthlyPayment = getMonthlyPayment();
     }
     @Override
     public double getTotalPrice(){

@@ -204,15 +204,17 @@ public class UserInterface {
         }
         System.out.println("whats the vehicle Vin?");
         int contractedVehicleVin = inputScanner.nextInt();
+        Vehicle vehicle = dealership.getVehicleByVin(contractedVehicleVin);
         // get date from comp
         Date date = new Date();
+
         inputScanner.nextLine();
         System.out.println("Name: ");
         String name = inputScanner.nextLine();
         System.out.println("Email: ");
         String email = inputScanner.nextLine();
 
-        Vehicle vehicle = dealership.getVehicleByVin(contractedVehicleVin);
+
          //get total price override method
        // System.out.println("monthly Payment: "); // override method
         System.out.println("do you wanna finance it? 1 ofr yes, 2 for no");
